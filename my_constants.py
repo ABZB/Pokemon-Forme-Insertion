@@ -1,6 +1,4 @@
-﻿from numpy import *
-
-class Pokedata:
+﻿class Pokedata:
     
     def __init__(self):
         #path variables   

@@ -1,7 +1,5 @@
 from tkinter import *
 
-from my_constants import *
-from file_handling import *
 from forme_importation_actual import *
 from utilities import *
 

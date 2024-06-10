@@ -2,7 +2,6 @@ import shutil
 import mmap
 import os
 import shutil
-from numpy import *
 
 from utilities import *
 from my_constants import *
