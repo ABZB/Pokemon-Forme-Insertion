@@ -275,15 +275,17 @@ def load_GARC(poke_edit_data, garc_path, target, gameassert):
         try:
             file_array = deconstruct_GARC(binary_file_to_array(garc_path), poke_edit_data)
 
-            match poke_edit_data.game:
-                case "XY":
-                    poke_edit_data.max_species_index = 721
-                case "ORAS":
-                    poke_edit_data.max_species_index = 721
-                case "SM":
-                    poke_edit_data.max_species_index = 802
-                case "USUM":
-                    poke_edit_data.max_species_index = 807
+            if(poke_edit_data.max_species_index == 0):
+
+                match poke_edit_data.game:
+                    case "XY":
+                        poke_edit_data.max_species_index = 721
+                    case "ORAS":
+                        poke_edit_data.max_species_index = 721
+                    case "SM":
+                        poke_edit_data.max_species_index = 802
+                    case "USUM":
+                        poke_edit_data.max_species_index = 807
 
             match target:
                 case "Personal":
