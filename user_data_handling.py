@@ -1,11 +1,10 @@
 import csv
-from tkinter.filedialog import askdirectory, asksaveasfilename, askopenfilename
+from tkinter.filedialog import asksaveasfilename, askopenfilename
 from utilities import *
 from file_handling import *
 from functools import reduce
 
-def binary_file_to_array(file_path):
-
+def binary_file_to_array(file_path: str) -> list[int]:
     with open(file_path, "r+b") as f:
         f.seek(0, os.SEEK_END)
         file_end = f.tell()
@@ -248,7 +247,7 @@ def reconstruct_GARC(poke_edit_data, GARC_name):
 
     return(temp)
 
-def save_GARC(poke_edit_data, GARC_name):
+def save_GARC(poke_edit_data, GARC_name: str):
 
     temp = reconstruct_GARC(poke_edit_data, GARC_name)
 

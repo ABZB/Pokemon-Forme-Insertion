@@ -63,10 +63,13 @@ def concatenate_bin_files(folder_path):
     
     return'''
 
-def update_csv_after_changes(poke_edit_data, base_form_index, new_forme_count, start_location, inserted_bool = False, model_source_flags = [0x0, 0x0]):
+def update_csv_after_changes(poke_edit_data, base_form_index, new_forme_count, start_location, inserted_bool = False,
+                             model_source_flags=None):
     
 
     #get all row numbers of this species
+    if model_source_flags is None:
+        model_source_flags = [0x0, 0x0]
     working_indices = find_rows_with_column_matching(poke_edit_data.master_list_csv, 2, int(base_form_index))
     
     
