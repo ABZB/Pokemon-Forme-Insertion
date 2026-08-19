@@ -342,8 +342,18 @@ def add_new_forme_execute(poke_edit_data, base_form_index, new_forme_count, mode
         '''
             
             
-        #first entry (Bulbasaur model) is at 4*(max_species_index + 1)
+        #first entry (nase Bulbasaur pair of byteflags) is at 4*(max_species_index + 1)
         start_of_byte_flag_table = 4*(poke_edit_data.max_species_index + 1)
+
+        #in case there is reserved space, keep going until we get to [0, 0], which should be the basic regular Bulbasaur
+
+        while True:
+            if(poke_edit_data.model_header[start_of_byte_flag_table:start_of_byte_flag_table+2] != [0x0, 0x0]):
+                start_of_byte_flag_table += 2
+            else:
+                break
+
+        print(f'Byte Table starts at {hex(start_of_byte_flag_table)}')
                 
                 
         #get the source model flag
@@ -352,7 +362,7 @@ def add_new_forme_execute(poke_edit_data, base_form_index, new_forme_count, mode
         model_source_flags = poke_edit_data.model_header[model_source_flag_offset:model_source_flag_offset + 2]
         
         if(model_source_flags != [0x0, 0x0]):
-            print('Warning, the model you chose has bitflags of ', bytes(model_source_flags[0]), bytes(model_source_flags[1]),' this might result in undesired behavior.')
+            print(f'Warning, the model you chose has byeflags of {hex(model_source_flags[0])}, {hex(model_source_flags[1])}, this might result in undesired behavior.')
 
         #bitflags will go to 2*(total_previous_models) + 1 plus the offset
 
